@@ -1,0 +1,17 @@
+{% extends 'note/base.html' %}
+
+{% block content %}
+	<div class="post">
+		<h1>{{ post.title }}</h1>
+		<a class="edit" href="{% url 'post_edit' pk=post.pk %}">編集する</a></h2>
+		<a class="edit" href="{% url 'post_remove' pk=post.pk %}">削除</a></h2>
+		{% if post.published_date %}
+			<div class="date">
+				{{ post.published_date }}
+				{{ post.author }}
+			</div>
+		{% endif %}
+		<p>{{ post.text|linebreaksbr }}</p>
+	</div>
+{% endblock %}
+

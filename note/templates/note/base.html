@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>失敗ノート</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/note.css' %}">
+	</head>
+	<body>
+		<div class="page-top-header">
+			<div class="page-header">
+				<h1><a href="/">失敗ノート</a></h1>
+				<h2>----みんなの失敗を学びに----</h2>
+				{% if user.is_authenticated %}
+				<h1 class="post-button"><a href="{% url 'post_new' %}">投稿する</a></h1>
+				<p class="top-menu">こんにちわ {{ user.username }} さん
+				<small>( <a href="{% url 'logout' %}"> ログアウト</a>)</small></p>
+				{% else %}
+					<a href="{% url 'login' %}">
+				{% endif %}
+			</div>
+		</div>
+		<div class="wrap">
+			{% block content %}
+			{% endblock %}
+		</div>
+		<footer>
+		</footer>
+	</body>
+</html>
+
